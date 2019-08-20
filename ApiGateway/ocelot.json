@@ -1,0 +1,114 @@
+{
+  "ReRoutes": [
+
+    // ArtistService
+    {
+      "DownstreamPathTemplate": "/api/artist",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 60188
+        }
+      ],
+      "UpstreamPathTemplate": "/artist-service/artist",
+      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/artist/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 60188
+        }
+      ],
+      "UpstreamPathTemplate": "/artist-service/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    
+
+    //Event Service
+    {
+      "DownstreamPathTemplate": "/api/event",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 59358
+        }
+      ],
+      "UpstreamPathTemplate": "/event-service",
+      [ "Post", "Put", "Delete" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/event/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 59358
+        }
+      ],
+      "UpstreamPathTemplate": "/event-service/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    //ProfileService
+    {
+      "DownstreamPathTemplate": "/api/profile",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 54272
+        }
+      ],
+      "UpstreamPathTemplate": "/profile-service/profile",
+      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/profile/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 54272
+        }
+      ],
+      "UpstreamPathTemplate": "/profile-service/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    //VenueService
+    {
+      "DownstreamPathTemplate": "/api/venue",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 57641
+        }
+      ],
+      "UpstreamPathTemplate": "/venue-service/venue",
+      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/venue/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 57641
+        }
+      ],
+      "UpstreamPathTemplate": "/venue-service/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:54685"
+  }
+}
