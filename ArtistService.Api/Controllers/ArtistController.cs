@@ -5,6 +5,7 @@ using ArtistService.Domain.Commands.Command;
 using ArtistService.Domain.Queries;
 using ArtistService.Domain.Queries.Query;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -24,6 +25,7 @@ namespace ArtistService.Api.Controllers
             _mapper = mapper;
         }
 
+        
         [HttpGet]
         [Route("GetArtists")]
         public ActionResult<IEnumerable<ArtistDTO>> GetAll()
@@ -46,7 +48,7 @@ namespace ArtistService.Api.Controllers
 
         [HttpPost]
         [Route("")]
-        public ActionResult<int> Post(CreateArtistDTO request)
+        public ActionResult<int> Post([FromBody] CreateArtistDTO request)
         {
             var command = new CreateArtistCommand(_mapper.Map<Artist>(request));
             var handler = _commandHandler.Build(command);
@@ -56,7 +58,7 @@ namespace ArtistService.Api.Controllers
 
         [HttpPut]
         [Route("")]
-        public ActionResult<Artist> Put(UpdateArtistDTO request)
+        public ActionResult<Artist> Put([FromBody] UpdateArtistDTO request)
         {
             var command = new EditArtistCommand(_mapper.Map<Artist>(request));
             var handler = _commandHandler.Build(command);
@@ -66,7 +68,7 @@ namespace ArtistService.Api.Controllers
 
         [HttpDelete]
         [Route("")]
-        public ActionResult<bool> Delete(DeleteArtistDTO request)
+        public ActionResult<bool> Delete([FromBody] DeleteArtistDTO request)
         {
             var command = new DeleteArtistCommand(_mapper.Map<Artist>(request));
             var handler = _commandHandler.Build(command);

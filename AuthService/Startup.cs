@@ -31,8 +31,8 @@ namespace AuthService
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = "JwtKey";
+                options.DefaultChallengeScheme = "JwtKey";
             })
                 .AddJwtBearer(options =>
                 {

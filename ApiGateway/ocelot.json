@@ -12,7 +12,12 @@
         }
       ],
       "UpstreamPathTemplate": "/artist-service/artist",
-      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ]
+      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ],
+      "AuthenticationOptions": 
+      {
+        "AuthenticationProviderKey": "JwtKey",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/artist/{everything}",
@@ -24,7 +29,11 @@
         }
       ],
       "UpstreamPathTemplate": "/artist-service/{everything}",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtKey",
+        "AllowedScopes": []
+      }
     },
     
 
@@ -38,8 +47,12 @@
           "Port": 59358
         }
       ],
-      "UpstreamPathTemplate": "/event-service",
-      [ "Post", "Put", "Delete" ]
+      "UpstreamPathTemplate": "/event-service/event",
+      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtKey",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/event/{everything}",
@@ -51,7 +64,11 @@
         }
       ],
       "UpstreamPathTemplate": "/event-service/{everything}",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtKey",
+        "AllowedScopes": []
+      }
     },
 
     //ProfileService
@@ -65,7 +82,11 @@
         }
       ],
       "UpstreamPathTemplate": "/profile-service/profile",
-      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ]
+      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtKey",
+        "AllowedScopes": []
+      }
     },
 
     {
@@ -78,7 +99,11 @@
         }
       ],
       "UpstreamPathTemplate": "/profile-service/{everything}",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtKey",
+        "AllowedScopes": []
+      }
     },
 
     //VenueService
@@ -92,7 +117,11 @@
         }
       ],
       "UpstreamPathTemplate": "/venue-service/venue",
-      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ]
+      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtKey",
+        "AllowedScopes": []
+      }
     },
 
     {
@@ -105,7 +134,11 @@
         }
       ],
       "UpstreamPathTemplate": "/venue-service/{everything}",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtKey",
+        "AllowedScopes": []
+      }
     }
   ],
   "GlobalConfiguration": {

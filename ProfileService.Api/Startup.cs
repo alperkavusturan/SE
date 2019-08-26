@@ -5,12 +5,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using ProfileService.Business.Abstract;
 using ProfileService.Data.Repository;
 using ProfileService.Data.Repository.EntityFramework;
 using ProfileService.Domain.Commands;
 using ProfileService.Domain.Queries;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.Text;
 using Service = ProfileService.Business;
 
 namespace ProfileService.Api
@@ -27,6 +30,32 @@ namespace ProfileService.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var audConfig = Configuration.GetSection("Audience");
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(audConfig["Secret"]));
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = signingKey,
+                ValidateIssuer = true,
+                ValidIssuer = audConfig["Iss"],
+                ValidateAudience = true,
+                ValidAudience = audConfig["Aud"],
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero,
+                RequireExpirationTime = true
+            };
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = "JwtKey";
+                options.DefaultChallengeScheme = "JwtKey";
+            })
+                .AddJwtBearer("JwtKey", x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.TokenValidationParameters = tokenValidationParameters;
+                });
+
             services.AddAutoMapper(typeof(Startup));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<EFDbContext>(x =>

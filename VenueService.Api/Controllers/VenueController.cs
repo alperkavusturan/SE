@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using VenueService.Api.DTOs;
@@ -10,6 +11,7 @@ using VenueService.Domain.Queries.Query;
 
 namespace VenueService.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class VenueController : ControllerBase
     {
@@ -45,7 +47,7 @@ namespace VenueService.Api.Controllers
 
         [HttpPost]
         [Route("")]
-        public ActionResult<int> Post(CreateVenueDTO request)
+        public ActionResult<int> Post([FromBody] CreateVenueDTO request)
         {
             var command = new CreateVenueCommand(_mapper.Map<Venue>(request));
             var handler = _commandHandler.Build(command);
@@ -55,7 +57,7 @@ namespace VenueService.Api.Controllers
 
         [HttpPut]
         [Route("")]
-        public ActionResult<UpdateVenueDTO> Put(UpdateVenueDTO request)
+        public ActionResult<UpdateVenueDTO> Put([FromBody] UpdateVenueDTO request)
         {
             var command = new EditVenueCommand(_mapper.Map<Venue>(request));
             var handler = _commandHandler.Build(command);
@@ -65,7 +67,7 @@ namespace VenueService.Api.Controllers
 
         [HttpDelete]
         [Route("")]
-        public ActionResult<bool> Delete(DeleteVenueDTO request)
+        public ActionResult<bool> Delete([FromBody] DeleteVenueDTO request)
         {
             var command = new DeleteVenueCommand(_mapper.Map<Venue>(request));
             var handler = _commandHandler.Build(command);

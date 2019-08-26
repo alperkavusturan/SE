@@ -36,7 +36,7 @@ namespace AuthService.Controllers
                     audience:"Catcher Wong",
                     claims: claims,
                     notBefore: now,
-                    expires: now.Add(TimeSpan.FromMinutes(2)),
+                    expires: now.Add(TimeSpan.FromMinutes(5)),
                     signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
                     );
 
@@ -44,7 +44,7 @@ namespace AuthService.Controllers
                 var responseJson = new
                 {
                     access_token = encodedJwt,
-                    expires_in = (int)TimeSpan.FromMinutes(2).TotalSeconds
+                    expires_in = (int)TimeSpan.FromMinutes(5).TotalSeconds
                 };
 
                 return new ObjectResult(responseJson);
@@ -52,8 +52,7 @@ namespace AuthService.Controllers
             else
             {
                 return Unauthorized();
-            }
-            
+            }         
         }
     }
 }

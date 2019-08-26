@@ -5,11 +5,13 @@ using EventService.Domain.Commands;
 using EventService.Domain.Commands.Command;
 using EventService.Domain.Queries;
 using EventService.Domain.Queries.Query;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace EventService.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class EventController : ControllerBase
     {
@@ -66,7 +68,7 @@ namespace EventService.Api.Controllers
 
         [HttpPost]
         [Route("")]
-        public ActionResult<int> Post(CreateEventDTO request)
+        public ActionResult<int> Post([FromBody] CreateEventDTO request)
         {
             var command = new CreateEventCommand(_mapper.Map<Event>(request));
             var handler = _commandHandler.Build(command);
@@ -76,7 +78,7 @@ namespace EventService.Api.Controllers
 
         [HttpPut]
         [Route("")]
-        public ActionResult<Event> Put(UpdateEventDTO request)
+        public ActionResult<Event> Put([FromBody] UpdateEventDTO request)
         {
             var command = new EditEventCommand(_mapper.Map<Event>(request));
             var handler = _commandHandler.Build(command);
@@ -86,7 +88,7 @@ namespace EventService.Api.Controllers
 
         [HttpDelete]
         [Route("")]
-        public ActionResult<bool> Delete(DeleteEventDTO request)
+        public ActionResult<bool> Delete([FromBody] DeleteEventDTO request)
         {
             var command = new DeleteEventCommand(_mapper.Map<Event>(request));
             var handler = _commandHandler.Build(command);

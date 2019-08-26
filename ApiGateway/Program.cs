@@ -23,7 +23,7 @@ namespace ApiGateway
             {
                 config.AddJsonFile("ocelot.json", optional:false, reloadOnChange: true);
             })
-            .UseUrls("https://localhost:44313")
+            .UseUrls("http://localhost:54685")
                 .UseStartup<Startup>();
     }
 }

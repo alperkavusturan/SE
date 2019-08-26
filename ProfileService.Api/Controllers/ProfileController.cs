@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProfileService.Api.DTOs;
 using ProfileService.Domain.Commands;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 
 namespace ProfileService.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class ProfileController : ControllerBase
     {
@@ -23,6 +25,7 @@ namespace ProfileService.Api.Controllers
             _mapper = mapper;
         }
 
+        
         [HttpGet]
         [Route("GetProfiles")]
         public ActionResult<IEnumerable<ProfileDTO>> GetAll()
@@ -45,7 +48,7 @@ namespace ProfileService.Api.Controllers
 
         [HttpPost]
         [Route("")]
-        public ActionResult<int> Post(CreateProfileDTO request)
+        public ActionResult<int> Post([FromBody] CreateProfileDTO request)
         {
             var command = new CreateProfileCommand(_mapper.Map<Data.Models.Profile>(request));
             var handler = _commandHandler.Build(command);
@@ -55,7 +58,7 @@ namespace ProfileService.Api.Controllers
 
         [HttpPut]
         [Route("")]
-        public ActionResult<Data.Models.Profile> Put(UpdateProfileDTO request)
+        public ActionResult<Data.Models.Profile> Put([FromBody] UpdateProfileDTO request)
         {
             var command = new EditProfileCommand(_mapper.Map<Data.Models.Profile>(request));
             var handler = _commandHandler.Build(command);
@@ -65,7 +68,7 @@ namespace ProfileService.Api.Controllers
 
         [HttpDelete]
         [Route("")]
-        public ActionResult<bool> Delete(DeleteProfileDTO request)
+        public ActionResult<bool> Delete([FromBody] DeleteProfileDTO request)
         {
             var command = new DeleteProfileCommand(_mapper.Map<Data.Models.Profile>(request));
             var handler = _commandHandler.Build(command);
