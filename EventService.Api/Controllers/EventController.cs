@@ -11,7 +11,10 @@ using System.Collections.Generic;
 
 namespace EventService.Api.Controllers
 {
+    #if DEBUG
+    #else
     [Authorize]
+    #endif
     [Route("api/[controller]")]
     public class EventController : ControllerBase
     {

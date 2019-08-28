@@ -11,6 +11,10 @@ using System.Collections.Generic;
 
 namespace ArtistService.Api.Controllers
 {
+    #if DEBUG
+    #else
+    [Authorize]
+    #endif
     [Route("api/[controller]")]
     public class ArtistController : ControllerBase
     {
