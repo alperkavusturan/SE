@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using System;
 using System.Text;
+
 
 namespace ApiGateway
 {
@@ -50,6 +52,12 @@ namespace ApiGateway
                 });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddLogging(loginBuilder =>
+            {
+                loginBuilder.AddConfiguration(Configuration.GetSection("Logging"));      
+                loginBuilder.AddConsole();
+                loginBuilder.AddDebug();
+            });
             services.AddOcelot(Configuration);
         }
 

@@ -21,9 +21,10 @@ namespace ApiGateway
             WebHost.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((host, config) =>
             {
-                config.AddJsonFile("ocelot.json", optional:false, reloadOnChange: true);
+                config.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
             })
             .UseUrls("http://localhost:54685")
                 .UseStartup<Startup>();
+            
     }
 }

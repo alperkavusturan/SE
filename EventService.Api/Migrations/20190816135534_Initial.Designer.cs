@@ -8,7 +8,7 @@ using System;
 
 namespace EventService.Api.Migrations
 {
-    [DbContext(typeof(EFDbContext))]
+    [DbContext(typeof(EfDbContext))]
     [Migration("20190816135534_Initial")]
     partial class Initial
     {

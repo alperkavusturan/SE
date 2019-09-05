@@ -7,7 +7,7 @@ using System;
 
 namespace EventService.Api.Migrations
 {
-    [DbContext(typeof(EFDbContext))]
+    [DbContext(typeof(EfDbContext))]
     partial class EFDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EventService.Data.Repository.EntityFramework
 {
-    public class EFDbContext : DbContext
+    public class EfDbContext : DbContext
     {
-        public EFDbContext(DbContextOptions<EFDbContext> options) : base(options) { }
+        public EfDbContext(DbContextOptions<EfDbContext> options) : base(options) { }
 
         public DbSet<Event> Events { get; set; }
         public DbSet<EventType> EventTypes { get; set; }

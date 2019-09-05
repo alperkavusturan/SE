@@ -58,7 +58,7 @@ namespace EventService.Api
 
             services.AddAutoMapper(typeof(Startup));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<EFDbContext>(x =>
+            services.AddDbContext<EfDbContext>(x =>
             {
                 x.UseSqlServer(Configuration.GetConnectionString("MsSqlDb"), b => b.MigrationsAssembly("EventService.Api"));
             });

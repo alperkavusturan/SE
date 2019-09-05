@@ -8,9 +8,9 @@ namespace EventService.Data.Repository.EntityFramework
 {
     public class EventRepository : IEventRepository
     {
-        EFDbContext _context;
+        EfDbContext _context;
 
-        public EventRepository(EFDbContext context)
+        public EventRepository(EfDbContext context)
         {
             _context = context;
         }

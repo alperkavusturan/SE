@@ -2,11 +2,11 @@
 {
     public class UnitOfWork : IUnitOfWork
     {
-        readonly EFDbContext _context;
+        readonly EfDbContext _context;
         IEventRepository _EventRepository;
         IEventTypeRepository _EventTypeRepository;
 
-        public UnitOfWork(EFDbContext context)
+        public UnitOfWork(EfDbContext context)
         {
             _context = context;
         }
