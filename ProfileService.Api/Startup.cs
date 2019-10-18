@@ -106,7 +106,6 @@ namespace ProfileService.Api
 
             app.UseSwagger();
             app.UseSwaggerUI(x => { x.SwaggerEndpoint("/swagger/v1/swagger.json", "ProfileService"); });
-            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

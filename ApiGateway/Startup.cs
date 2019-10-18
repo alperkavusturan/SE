@@ -74,7 +74,6 @@ namespace ApiGateway
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
             app.UseMvc();
             await app.UseOcelot();
 

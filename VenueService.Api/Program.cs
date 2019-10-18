@@ -12,7 +12,7 @@ namespace VenueService.Api
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .UseUrls("http://localhost:57641")
+            .UseUrls("http://0.0.0.0:57641")
                 .UseStartup<Startup>();
     }
 }

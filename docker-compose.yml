@@ -1,0 +1,44 @@
+version: '3.4'
+
+services:
+	artistservice:
+		image: artistservice:latest
+		build:
+			context: .
+			dockerfile: ArtistService.Api/Dockerfile
+		container_name: artistservice
+	eventservice:
+		image: eventservice:latest
+		build:
+			context: .
+			dockerfile: EventService.Api/Dockerfile
+		container_name: eventservice
+	venueservice:
+		image: venueservice:latest
+		build:
+			context: .
+			dockerfile: VenueService.Api/Dockerfile
+		container_name: venueservice
+	profileservice:
+		image: profileservice:latest
+		build:
+			context: .
+			dockerfile: ProfileService.Api/Dockerfile
+		container_name: profileservice
+	ticketingservice:
+		image: ticketingservice:latest
+		build:
+			context: .
+			dockerfile: TicketingService.Api/Dockerfile
+		container_name: ticketingservice	
+	api.gateway:
+		image: apigateway:latest
+		build:
+			context: .
+			dockerfile: ApiGateway/Dockerfile
+		container_name: apigateway
+	consul:
+		image: consul:latest
+		command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
+		hostname: consul
+		container_name: consul

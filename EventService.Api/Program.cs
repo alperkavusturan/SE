@@ -12,7 +12,7 @@ namespace EventService.Api
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .UseUrls("http://localhost:59358")
+            .UseUrls("http://0.0.0.0:59358")
                 .UseStartup<Startup>();
     }
 }

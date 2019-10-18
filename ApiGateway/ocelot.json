@@ -7,14 +7,13 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 60188
+          "Host": "176.53.34.37",
+          "Port": 60188 //7001
         }
       ],
       "UpstreamPathTemplate": "/artist-service/artist",
       "UpstreamHttpMethod": [ "Post", "Put", "Delete" ],
-      "AuthenticationOptions": 
-      {
+      "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtKey",
         "AllowedScopes": []
       }
@@ -24,8 +23,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 60188
+          "Host": "176.53.34.37",
+          "Port": 60188 //7001
         }
       ],
       "UpstreamPathTemplate": "/artist-service/{everything}",
@@ -35,7 +34,7 @@
         "AllowedScopes": []
       }
     },
-    
+
 
     //Event Service
     {
@@ -43,7 +42,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "176.53.34.37",
           "Port": 59358
         }
       ],
@@ -59,7 +58,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "176.53.34.37",
           "Port": 59358
         }
       ],
@@ -77,7 +76,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "176.53.34.37",
           "Port": 54272
         }
       ],
@@ -94,11 +93,46 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "176.53.34.37",
           "Port": 54272
         }
       ],
       "UpstreamPathTemplate": "/profile-service/{everything}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtKey",
+        "AllowedScopes": []
+      }
+    },
+
+    //TicketingService
+    {
+      "DownstreamPathTemplate": "/api/ticketingrecord",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "176.53.34.37",
+          "Port": 52824
+        }
+      ],
+      "UpstreamPathTemplate": "/ticketing-service/ticketing-record",
+      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtKey",
+        "AllowedScopes": []
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/ticketingrecord/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "176.53.34.37",
+          "Port": 52824
+        }
+      ],
+      "UpstreamPathTemplate": "/ticketing-service/{everything}",
       "UpstreamHttpMethod": [ "Get" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtKey",
@@ -112,7 +146,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "176.53.34.37",
           "Port": 57641
         }
       ],
@@ -129,7 +163,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "176.53.34.37",
           "Port": 57641
         }
       ],
@@ -142,6 +176,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:54685"
+    "BaseUrl": "http://176.53.34.37:54685"
   }
 }

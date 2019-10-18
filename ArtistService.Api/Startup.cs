@@ -107,7 +107,6 @@ namespace ArtistService.Api
 
             app.UseSwagger();
             app.UseSwaggerUI(x => { x.SwaggerEndpoint("/swagger/v1/swagger.json", "ArtistService"); });
-            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

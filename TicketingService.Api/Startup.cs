@@ -111,7 +111,6 @@ namespace TicketingService.Api
 
             app.UseSwagger();
             app.UseSwaggerUI(x => { x.SwaggerEndpoint("/swagger/v1/swagger.json", "TicketingService"); });
-            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

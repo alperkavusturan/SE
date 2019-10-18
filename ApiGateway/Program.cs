@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ApiGateway
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
@@ -23,7 +23,7 @@ namespace ApiGateway
             {
                 config.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
             })
-            .UseUrls("http://localhost:54685")
+                .UseUrls("http://0.0.0.0:54685")
                 .UseStartup<Startup>();
             
     }

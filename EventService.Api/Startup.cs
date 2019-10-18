@@ -105,8 +105,7 @@ namespace EventService.Api
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(x => { x.SwaggerEndpoint("/swagger/v1/swagger.json", "EventService"); });
-            app.UseHttpsRedirection();
+            app.UseSwaggerUI(x => { x.SwaggerEndpoint("/swagger/v1/swagger.json", "EventService"); });           
             app.UseMvc();
         }
     }

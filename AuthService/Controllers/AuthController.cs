@@ -54,5 +54,11 @@ namespace AuthService.Controllers
                 return Unauthorized();
             }         
         }
+
+        [HttpGet("alper")]
+        public string Get()
+        {
+            return "Alper";
+        }
     }
 }

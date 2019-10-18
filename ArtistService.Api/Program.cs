@@ -12,7 +12,7 @@ namespace ArtistService.Api
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseUrls("http://localhost:60188")
+                .UseUrls("http://0.0.0.0:60188")
                 .UseStartup<Startup>();
     }
 }

@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TicketingService.Domain.Queries;
-using TicketingService.Domain.Commands;
-using AutoMapper;
+using System.Collections.Generic;
 using TicketingService.Api.DTOs;
-using TicketingService.Domain.Queries.Query;
-using TicketingService.Domain.Commands.Command;
 using TicketingService.Data.Models;
+using TicketingService.Domain.Commands;
+using TicketingService.Domain.Commands.Command;
+using TicketingService.Domain.Queries;
+using TicketingService.Domain.Queries.Query;
 
 namespace TicketingService.Api.Controllers
 {
-    #if DEBUG
-    #else
+#if DEBUG
+#else
     [Authorize]
-    #endif
+#endif
     [Route("api/[controller]")]
     public class TicketingRecordController : ControllerBase
     {
