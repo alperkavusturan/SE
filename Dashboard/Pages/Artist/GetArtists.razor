@@ -1,0 +1,50 @@
+@page "/GetArtists"
+@using System.Collections
+@using Dashboard.Data.SEService
+@using RestSharp
+@using Dashboard.Data
+@inject SEService  seService
+
+
+<h1>Artists List</h1>
+
+<p>This page lists recorded artists</p>
+
+@if (artists == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Nickname</th>
+                <th>Artist Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var artist in artists)
+            {
+                <tr>
+                    <td>@artist.id</td>
+                    <td>@artist.name</td>
+                    <td>@artist.surname</td>
+                    <td>@artist.nickname</td>
+                    <td>@artist.artistTypeName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+        ArtistDTO[] artists;
+        protected override async Task OnInitAsync()
+        {
+            artists = seService.CallService<string,ArtistDTO[]>(null, ":54685/artist-service/GetArtists", Method.GET);
+        }
+    }
