@@ -11,10 +11,7 @@ using TicketingService.Domain.Queries.Query;
 
 namespace TicketingService.Api.Controllers
 {
-#if DEBUG
-#else
-    [Authorize]
-#endif
+
     [Route("api/[controller]")]
     public class TicketingRecordController : ControllerBase
     {
