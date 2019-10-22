@@ -1,14 +1,12 @@
-@page "/GetArtists"
-@using System.Collections
-@using Dashboard.Data.SEService
+﻿@page "/GetArtists"
+@using Dashboard.Web.Data.Services
 @using RestSharp
-@using Dashboard.Data
-@inject SEService  seService
+@using Dashboard.Web.Data
+@inject ArtistService service
 
+<h1>List Artists</h1>
 
-<h1>Artists List</h1>
-
-<p>This page lists recorded artists</p>
+<p>This component lists registered artists.</p>
 
 @if (artists == null)
 {
@@ -23,7 +21,7 @@ else
                 <th>Name</th>
                 <th>Surname</th>
                 <th>Nickname</th>
-                <th>Artist Type</th>
+                <th>Type</th>
             </tr>
         </thead>
         <tbody>
@@ -42,9 +40,11 @@ else
 }
 
 @code {
-        ArtistDTO[] artists;
-        protected override async Task OnInitAsync()
-        {
-            artists = seService.CallService<string,ArtistDTO[]>(null, ":54685/artist-service/GetArtists", Method.GET);
-        }
+    ArtistDTO[] artists;
+
+    protected override async Task OnInitializedAsync()
+    {
+        artists = service.CallService<string,ArtistDTO[]>(null,"GetArtists", Method.GET);
+
     }
+}
