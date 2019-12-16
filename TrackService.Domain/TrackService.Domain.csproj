@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\Command\" />
+    <Folder Include="Commands\Handler\" />
+    <Folder Include="Queries\Handler\" />
+    <Folder Include="Queries\Query\" />
+  </ItemGroup>
+
+</Project>
