@@ -14,28 +14,25 @@ namespace UploadService.Api.Controllers
     {
         // POST api/values
         [HttpPost]
-        public async Task<IActionResult> Post(IFormFile file)
+        public async Task<IActionResult> Post([FromForm]IFormFile file)
         {
             if (file == null || file.Length == 0)
                 return Content("file not selected");
+            var extension = file.FileName.Split('.');
+            var fileName = Helper.Helper.GetHashString(string.Concat(file.FileName + DateTime.UtcNow));
 
             var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), "wwwroot",
-                        file.FileName);
+                        Directory.GetCurrentDirectory(), "Uploaded",
+                        string.Concat(fileName,".", extension[extension.Length-1]));
 
             using (var stream = new FileStream(path, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
             }
 
-            return RedirectToAction("Files");
+            return Ok();
         }
 
-        [HttpGet]
-        public async Task<string> Get()
-        {
-            return "Selam";
-        }
 
 
     }
