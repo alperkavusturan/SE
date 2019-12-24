@@ -158,14 +158,14 @@
       }
     },
 
-    //TicketingService
+    //TrackService
     {
       "DownstreamPathTemplate": "/api/track",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "176.53.34.37",
-          "Port": 52824
+          "Port": 55358
         }
       ],
       "UpstreamPathTemplate": "/track-service/track",
@@ -185,7 +185,7 @@
           "Port": 55358
         }
       ],
-      "UpstreamPathTemplate": "/ticketing-service/{everything}",
+      "UpstreamPathTemplate": "/track-service/{everything}",
       "UpstreamHttpMethod": [ "Get" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "JwtKey",
