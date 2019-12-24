@@ -19,6 +19,7 @@ namespace TrackService.Api
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            .UseUrls("http://0.0.0.0:55358")
                 .UseStartup<Startup>();
     }
 }

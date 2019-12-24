@@ -4,7 +4,12 @@ using System.Text;
 
 namespace TrackService.Domain.Commands
 {
-    interface ICommand
+    public interface ICommand<out TResult>
     {
+    }
+
+    public interface ICommandHandler<in TCommand, out TResult> where TCommand : ICommand<TResult>
+    {
+        TResult Execute();
     }
 }

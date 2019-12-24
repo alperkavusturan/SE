@@ -16,5 +16,8 @@ RUN dotnet publish "UploadService.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=publish /app .
+ENV ASPNETCORE_URLS http://*:52824
+ENV ASPNETCORE_ENVIRONMENT docker
+EXPOSE 60300
 ENTRYPOINT ["dotnet", "UploadService.Api.dll"]

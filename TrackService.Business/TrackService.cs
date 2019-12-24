@@ -72,6 +72,30 @@ namespace TrackService.Business
             }
         }
 
+        public List<Track> GetTracksByProfileId(int id)
+        {
+            try
+            {
+                return _unitOfWork.TrackRepository.GetByProfileId(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<Track> GetTracksByArtistId(int id)
+        {
+            try
+            {
+                return _unitOfWork.TrackRepository.GetByArtistId(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public IEnumerable<Track> GetTracks()
         {
             try
@@ -83,5 +107,7 @@ namespace TrackService.Business
                 throw;
             }
         }
+
+       
     }
 }

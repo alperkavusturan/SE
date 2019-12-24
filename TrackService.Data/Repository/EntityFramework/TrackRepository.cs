@@ -64,6 +64,30 @@ namespace TrackService.Data.Repository.EntityFramework
             }
         }
 
+        public List<Track> GetByProfileId(int id)
+        {
+            try
+            {
+                return _context.Tracks.Where(x => x.ProfileId == id).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<Track> GetByArtistId(int id)
+        {
+            try
+            {
+                return _context.Tracks.Where(x => x.ArtistId == id).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public Track Update(Track item)
         {
             try

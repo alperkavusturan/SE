@@ -1,6 +1,24 @@
 {
   "ReRoutes": [
 
+    // UploadService
+    {
+      "DownstreamPathTemplate": "/api/upload",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "176.53.34.37",
+          "Port": 60300 //7001
+        }
+      ],
+      "UpstreamPathTemplate": "/upload-service/upload",
+      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtKey",
+        "AllowedScopes": []
+      }
+    },
+
     // ArtistService
     {
       "DownstreamPathTemplate": "/api/artist",
@@ -130,6 +148,41 @@
         {
           "Host": "176.53.34.37",
           "Port": 52824
+        }
+      ],
+      "UpstreamPathTemplate": "/ticketing-service/{everything}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtKey",
+        "AllowedScopes": []
+      }
+    },
+
+    //TicketingService
+    {
+      "DownstreamPathTemplate": "/api/track",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "176.53.34.37",
+          "Port": 52824
+        }
+      ],
+      "UpstreamPathTemplate": "/track-service/track",
+      "UpstreamHttpMethod": [ "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JwtKey",
+        "AllowedScopes": []
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/track/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "176.53.34.37",
+          "Port": 55358
         }
       ],
       "UpstreamPathTemplate": "/ticketing-service/{everything}",

@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using AutoMapper;
-using TicketingService.Data.Repository.EntityFramework;
-using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
-using Service = TicketingService.Business;
+using System;
+using System.Text;
 using TicketingService.Business.Abstract;
 using TicketingService.Data.Repository;
-using TicketingService.Domain.Queries;
+using TicketingService.Data.Repository.EntityFramework;
 using TicketingService.Domain.Commands;
+using TicketingService.Domain.Queries;
+using Service = TicketingService.Business;
 
 namespace TicketingService.Api
 {
